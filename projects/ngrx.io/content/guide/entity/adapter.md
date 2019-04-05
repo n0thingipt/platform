@@ -116,7 +116,7 @@ export const UserActions = {
   addUser: createAction('[User/API] Add User', props<{ user: User }>()),
   upsertUser: createAction('[User/API] Upsert User', props<{ user: User }>()),
   addUsers: createAction('[User/API] Add Users', props<{ user: User }>()),
-  upserUsers: createAction('[User/API] Upsert Users', props<{ users: User[] }>()),
+  upsertUsers: createAction('[User/API] Upsert Users', props<{ users: User[] }>()),
   updateUser: createAction('[User/API] Update User', props<{ user: Update&lt;User&gt; }>()),
   updateUsers: createAction('[User/API] Update Users', props<{ users: Update&lt;User&gt;[] }>()),
   mapUsers: createAction('[User/API] Map Users', props<{ entityMap: EntityMap&lt;User&gt; }>()),
@@ -150,47 +150,47 @@ export const initialState: State = adapter.getInitialState({
 export function reducer(state = initialState, action: UserActions): State {
   switch (action.type) {
     case UserActions.addUser.type: {
-      return adapter.addOne(action.payload.user, state);
+      return adapter.addOne(action.user, state);
     }
 
     case UserActions.upsertUser.type: {
-      return adapter.upsertOne(action.payload.user, state);
+      return adapter.upsertOne(action.user, state);
     }
 
     case UserActions.addUsers.type: {
-      return adapter.addMany(action.payload.users, state);
+      return adapter.addMany(action.users, state);
     }
 
     case UserActions.upsertUsers.type: {
-      return adapter.upsertMany(action.payload.users, state);
+      return adapter.upsertMany(action.users, state);
     }
 
     case UserActions.updateUser.type: {
-      return adapter.updateOne(action.payload.user, state);
+      return adapter.updateOne(action.user, state);
     }
 
     case UserActions.updateUsers.type: {
-      return adapter.updateMany(action.payload.users, state);
+      return adapter.updateMany(action.users, state);
     }
 
     case UserActions.mapUsers.type: {
-      return adapter.map(action.payload.entityMap, state);
+      return adapter.map(action.entityMap, state);
     }
 
     case UserActions.deleteUser.type: {
-      return adapter.removeOne(action.payload.id, state);
+      return adapter.removeOne(action.id, state);
     }
 
     case UserActions.deleteUsers.type: {
-      return adapter.removeMany(action.payload.ids, state);
+      return adapter.removeMany(action.ids, state);
     }
 
-    case UserActionss.deleteUsersByPredicate.type: {
-      return adapter.removeMany(action.payload.predicate, state);
+    case UserActions.deleteUsersByPredicate.type: {
+      return adapter.removeMany(action.predicate, state);
     }
 
     case UserActions.loadUsers.type: {
-      return adapter.addAll(action.payload.users, state);
+      return adapter.addAll(action.users, state);
     }
 
     case UserActions.clearUsers.type: {

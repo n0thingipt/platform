@@ -146,7 +146,7 @@ describe('My Component', () => {
   });
 
   it('should dispatch an action to refreshing data', () => {
-    const action = new DataActions.refreshData();
+    const action = DataActions.refreshData();
 
     component.onRefresh();
 
@@ -155,7 +155,7 @@ describe('My Component', () => {
 
   it('should display a list of items after the data is loaded', () => {
     const items = [1, 2, 3];
-    const action = new DataActions.loadDataSuccess({ items });
+    const action = DataActions.loadDataSuccess({ items });
 
     store.dispatch(action);
 

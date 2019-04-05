@@ -39,7 +39,7 @@ describe('My Effects', () => {
 
   it('should work', () => {
     const action = MyActions.exampleAction();
-    const completion = new MyActions.exampleActionSuccess();
+    const completion = MyActions.exampleActionSuccess();
 
     // Refer to 'Writing Marble Tests' for details on '--a-' syntax
     actions = hot('--a-', { a: action });

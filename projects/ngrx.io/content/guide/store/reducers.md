@@ -105,7 +105,7 @@ In the example above, the reducer is handling 3 actions: `[Scoreboard Page] Home
 
 <div class="alert is-important">
 
-**Note:** The spread operator only does shallow copying and does not handle deeply nested objects. You need to copy each level in the object to ensure immutability. There are libraries that handle deep copying including [lodash](https://lodash.com) and [immer](https://github.com/mweststrate/immer).
+**Note:** The [spread operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax) only does shallow copying and does not handle deeply nested objects. You need to copy each level in the object to ensure immutability. There are libraries that handle deep copying including [lodash](https://lodash.com) and [immer](https://github.com/mweststrate/immer).
 
 </div>
 
