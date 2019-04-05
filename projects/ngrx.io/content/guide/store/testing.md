@@ -20,7 +20,6 @@ import { provideMockStore } from '@ngrx/store/testing';
 import { cold } from 'jasmine-marbles';
 
 import { AuthGuard } from '../guards/auth.guard';
-import * as AuthActions from '../actions/auth-actions';
 
 describe('Auth Guard', () => {
   let guard: AuthGuard;
@@ -71,7 +70,7 @@ Use the `StoreModule.forRoot` in your `TestBed` configuration when testing compo
 import { Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import * as fromFeature from '../reducers';
-import * as DataActions from '../actions/data';
+import { DataActions } from '../actions/data';
 
 @Component({
   selector: 'my-component',
@@ -87,11 +86,11 @@ export class MyComponent implements OnInit {
   constructor(private store: Store&lt;fromFeature.State&gt;) {}
 
   ngOnInit() {
-    this.store.dispatch(new DataActions.LoadData());
+    this.store.dispatch(DataActions.loadData());
   }
 
   onRefresh() {
-    this.store.dispatch(new DataActions.RefreshItems());
+    this.store.dispatch(DataActions.refreshItems());
   }
 }
 </code-example>
@@ -102,7 +101,7 @@ import { StoreModule, Store, combineReducers } from '@ngrx/store';
 import { MyComponent } from './my.component';
 import * as fromRoot from '../reducers';
 import * as fromFeature from '../feature/reducers';
-import * as DataActions from '../actions/data';
+import { DataActions } from '../actions/data';
 
 describe('My Component', () => {
   let component: MyComponent;
@@ -141,13 +140,13 @@ describe('My Component', () => {
   });
 
   it('should dispatch an action to load data when created', () => {
-    const action = new DataActions.LoadData();
+    const action = DataActions.loadData();
 
     expect(store.dispatch).toHaveBeenCalledWith(action);
   });
 
   it('should dispatch an action to refreshing data', () => {
-    const action = new DataActions.RefreshData();
+    const action = new DataActions.refreshData();
 
     component.onRefresh();
 
@@ -156,7 +155,7 @@ describe('My Component', () => {
 
   it('should display a list of items after the data is loaded', () => {
     const items = [1, 2, 3];
-    const action = new DataActions.LoadDataSuccess({ items });
+    const action = new DataActions.loadDataSuccess({ items });
 
     store.dispatch(action);
 
