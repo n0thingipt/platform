@@ -1,8 +1,11 @@
-import { createAction, props } from '@ngrx/store';
+import { createAction, props, union } from '@ngrx/store';
 
-export const searchBooks = createAction(
-  '[Find Book Page] Search Books',
-  props<{ query: string }>()
-);
+export const FindBookPageActions = {
+  searchBooks: createAction(
+    '[Find Book Page] Search Books',
+    props<{ query: string }>()
+  ),
+};
 
-export type FindBookPageActionsUnion = ReturnType<typeof searchBooks>;
+const all = union(FindBookPageActions);
+export type FindBookPageActions = typeof all;

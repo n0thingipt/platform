@@ -10,7 +10,7 @@ const initialState: State = {
 };
 
 export function reducer(state: State = initialState, action: Action): State {
-  const specificAction = action as LayoutActions.LayoutActionsUnion;
+  const specificAction = action as LayoutActions;
 
   switch (specificAction.type) {
     case LayoutActions.closeSidenav.type:

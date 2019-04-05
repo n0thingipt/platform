@@ -1,9 +1,12 @@
-import { createAction, props } from '@ngrx/store';
+import { createAction, props, union } from '@ngrx/store';
 import { Book } from '@example-app/books/models/book';
 
-export const loadBook = createAction(
-  '[Book Exists Guard] Load Book',
-  props<{ book: Book }>()
-);
+export const BookActions = {
+  loadBook: createAction(
+    '[Book Exists Guard] Load Book',
+    props<{ book: Book }>()
+  ),
+};
 
-export type BookActionsUnion = ReturnType<typeof loadBook>;
+const all = union(BookActions);
+export type BookActions = typeof all;

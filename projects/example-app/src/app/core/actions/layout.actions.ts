@@ -1,7 +1,9 @@
 import { createAction, union } from '@ngrx/store';
 
-export const openSidenav = createAction('[Layout] Open Sidenav');
-export const closeSidenav = createAction('[Layout] Close Sidenav');
+export const LayoutActions = {
+  openSidenav: createAction('[Layout] Open Sidenav'),
+  closeSidenav: createAction('[Layout] Close Sidenav'),
+};
 
-const all = union({ openSidenav, closeSidenav });
-export type LayoutActionsUnion = typeof all;
+const all = union(LayoutActions);
+export type LayoutActions = typeof all;

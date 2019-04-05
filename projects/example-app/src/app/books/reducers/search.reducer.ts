@@ -19,9 +19,7 @@ const initialState: State = {
 
 export function reducer(
   state = initialState,
-  action:
-    | BooksApiActions.BooksApiActionsUnion
-    | FindBookPageActions.FindBookPageActionsUnion
+  action: BooksApiActions | FindBookPageActions
 ): State {
   switch (action.type) {
     case FindBookPageActions.searchBooks.type: {

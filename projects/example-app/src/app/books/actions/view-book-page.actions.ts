@@ -1,8 +1,11 @@
-import { createAction, props } from '@ngrx/store';
+import { createAction, props, union } from '@ngrx/store';
 
-export const selectBook = createAction(
-  '[View Book Page] Select Book',
-  props<{ id: string }>()
-);
+export const ViewBookPageActions = {
+  selectBook: createAction(
+    '[View Book Page] Select Book',
+    props<{ id: string }>()
+  ),
+};
 
-export type ViewBookPageActionsUnion = ReturnType<typeof selectBook>;
+const all = union(ViewBookPageActions);
+export type ViewBookPageActions = typeof all;

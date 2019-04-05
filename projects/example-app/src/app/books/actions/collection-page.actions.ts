@@ -1,8 +1,8 @@
-import { createAction } from '@ngrx/store';
+import { createAction, union } from '@ngrx/store';
 
-/**
- * Load Collection Action
- */
-export const loadCollection = createAction('[Collection Page] Load Collection');
+export const CollectionPageActions = {
+  loadCollection: createAction('[Collection Page] Load Collection'),
+};
 
-export type CollectionPageActionsUnion = ReturnType<typeof loadCollection>;
+const all = union(CollectionPageActions);
+export type CollectionPageActions = typeof all;
